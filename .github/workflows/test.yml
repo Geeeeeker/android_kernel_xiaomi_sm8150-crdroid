@@ -210,6 +210,15 @@ jobs:
               }
             }' os_dep/linux/ioctl_cfg80211.c
           fi
+
+      - name: 禁用 PROCESS_RECLAIM (Android 11 及以下)
+        if: env.ANDROID_VERSION == '11.0'
+        working-directory: kernel
+        run: |
+          DEFCONFIG="arch/arm64/configs/${{ env.DEFCONFIG }}"
+          sed -i 's/^CONFIG_PROCESS_RECLAIM=y/# CONFIG_PROCESS_RECLAIM is not set/' "${DEFCONFIG}"
+          echo "# CONFIG_PROCESS_RECLAIM is not set" >> "${DEFCONFIG}"
+          
       - name: 修复 KSU/SUSFS 引入的 hugetlbpage 编译错误
         working-directory: kernel
         run: |
