@@ -16,7 +16,7 @@ env:
   CLANG_VERSION: r547379
   CLANG_TARBALL_URL: https://github.com/Geeeeeker/boot/releases/download/clang-prebuilts-20260319-031015/clang-r547379.tar.gz
   MAGISK_CANARY_URL: https://github.com/topjohnwu/Magisk/releases/download/v30.7/Magisk-v30.7.apk
-  KERNELSU_VERSION: v3.2.0
+  KERNELSU_VERSION: v3.1.0
   APATCH_VERSION: 11142
   APATCH_TAG: 11142_166daa0_on_HEAD-release-signed
 
@@ -39,11 +39,11 @@ jobs:
             gcc-aarch64-linux-gnu \
             gcc-arm-linux-gnueabi
 
-      - name: 检出内核源码 (分支 16.0-SUSFS)
+      - name: 检出内核源码 (分支 16.0支持SUSFS)
         uses: actions/checkout@v4
         with:
           repository: Geeeeeker/android_kernel_xiaomi_sm8150-crdroid
-          ref: 16.0-20260204
+          ref: 16.0
           path: kernel
       # ========== 修复：注释掉 Btrfs 相关配置 ==========
       - name: 禁用 Btrfs 支持
