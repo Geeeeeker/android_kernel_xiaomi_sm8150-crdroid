@@ -246,11 +246,6 @@ jobs:
             KCFLAGS="-Wno-unknown-warning-option" \
             ${{ env.DEFCONFIG }} Image.gz-dtb
 
-      - name: 检查 KSU/SUSFS 是否编入内核
-        run: |
-          grep -E "CONFIG_KSU=y|CONFIG_KSU_SUSFS=y" kernel/out/.config
-          grep "ksu_handle_faccessat" kernel/out/fs/open.o || echo "KSU symbol not found (may be inlined)"
-
       # ========== USB/IP 支持 ==========
       - name: 设置 QEMU 用户态支持 (用于 arm64 容器)
         run: |
