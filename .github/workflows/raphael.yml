@@ -43,7 +43,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: Geeeeeker/android_kernel_xiaomi_sm8150-crdroid
-          ref: 16.0
+          ref: '16.0'        # ← 加上引号，明确是字符串
           path: kernel
       # ========== 修复：注释掉 Btrfs 相关配置 ==========
       - name: 禁用 Btrfs 支持
