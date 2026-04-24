@@ -421,7 +421,8 @@ jobs:
       - name: 下载 Magisk Canary APK
         run: |
           wget -O apk-output/Magisk-Canary.apk "${{ env.MAGISK_CANARY_URL }}"
-            - name: 上传 APK 工件
+
+      - name: 上传 APK 工件
         uses: actions/upload-artifact@v4
         with:
           name: Manager-APKs
